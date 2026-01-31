@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informasi Website - Jejak Rimba</title>
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="global-bg"></div>
+    <div class="page-transition"></div>
+
+    <nav class="navbar">
+        <a href="index.html" class="logo">JEJAK RIMBA</a>
+        <ul class="nav-links desktop-menu">
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="destinasi.html">Destinasi</a></li>
+            <li><a href="informasi.html" style="color: var(--accent);">Informasi</a></li>
+        </ul>
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
+
+    <div class="sidebar-overlay"></div>
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <span class="sidebar-logo">JEJAK RIMBA</span>
+            <div class="close-btn">&times;</div>
+        </div>
+        <ul class="sidebar-links">
+            <li style="margin-top: 10px; margin-bottom: 10px; font-size: 0.8rem; color: #888; padding-left: 15px;">MENU</li>
+            <li><a href="index.html"><span>🏠</span> Beranda</a></li>
+            <li><a href="destinasi.html"><span>🏔️</span> Destinasi</a></li>
+            <li><a href="informasi.html"><span>ℹ️</span> Informasi Web</a></li>
+            <li style="border-top: 1px solid rgba(255,255,255,0.1); margin: 15px 0;"></li>
+            <li><a href="index.html#weather-section" onclick="closeMenu()"><span>⛅</span> Cek Cuaca</a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <p>&copy; 2025 Jejak Rimba</p>
+        </div>
+    </aside>
+
+    <header class="hero-section" style="height: 50vh;">
+        <div class="hero-content">
+            <h1 class="anim-text">Tentang Jejak Rimba</h1>
+            <p class="anim-text delay">Mengenal fitur dan teknologi di balik portal petualangan ini.</p>
+        </div>
+    </header>
+
+    <main class="content-section">
+        
+        <div class="glass-panel" style="margin-bottom: 50px;">
+            <h2 class="section-title text-center reveal-type">Apa Itu Jejak Rimba?</h2>
+            <p class="text-center reveal-type" style="max-width: 800px; margin: 0 auto;">
+                Jejak Rimba adalah website interaktif yang dirancang untuk para pecinta alam. Kami menyediakan informasi lengkap mengenai 7 Puncak Tertinggi Indonesia, peta topografi jalur pendakian, hingga data cuaca real-time untuk persiapan ekspedisi Anda.
+            </p>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-card reveal-type">
+                <div class="icon">🏔️</div>
+                <h3>Database 7 Summits</h3>
+                <p>Informasi detail mengenai ketinggian, lokasi, dan karakteristik unik dari 7 gunung tertinggi di Indonesia.</p>
+            </div>
+
+            <div class="info-card reveal-type">
+                <div class="icon">⛅</div>
+                <h3>Cek Cuaca Real-Time</h3>
+                <p>Fitur canggih yang terhubung langsung dengan satelit (API) untuk mengecek suhu dan kondisi angin di lokasi gunung.</p>
+            </div>
+
+            <div class="info-card reveal-type">
+                <div class="icon">🗺️</div>
+                <h3>Peta Interaktif</h3>
+                <p>Jelajahi lokasi gunung menggunakan peta digital (Leaflet JS) yang akurat dan responsif.</p>
+            </div>
+
+            <div class="info-card reveal-type">
+                <div class="icon">✨</div>
+                <h3>Experience Design</h3>
+                <p>Desain modern dengan efek Glassmorphism, Motion Blur, dan animasi halus untuk pengalaman visual terbaik.</p>
+            </div>
+        </div>
+
+        <div class="glass-panel text-center reveal-type" style="margin-top: 50px;">
+            <h3 style="color: var(--accent); margin-bottom: 20px;">Dibuat Menggunakan:</h3>
+            <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+                <span class="tech-badge">HTML5</span>
+                <span class="tech-badge">CSS3</span>
+                <span class="tech-badge">JavaScript</span>
+                <span class="tech-badge">GSAP</span>
+                <span class="tech-badge">OpenWeatherMap</span>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Jejak Rimba. Informasi Website.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

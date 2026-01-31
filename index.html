@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jejak Rimba - The Ultimate Adventure</title>
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="global-bg"></div>
+
+    <div class="page-transition"></div>
+
+    <nav class="navbar">
+        <a href="index.html" class="logo">JEJAK RIMBA</a>
+        
+        <ul class="nav-links desktop-menu">
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="destinasi.html">Destinasi</a></li>
+            <li><a href="#about">Tentang</a></li>
+        </ul>
+        
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
+
+    <div class="sidebar-overlay"></div>
+    
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <span class="sidebar-logo">JEJAK RIMBA</span>
+            <div class="close-btn">&times;</div>
+        </div>
+        
+        <ul class="sidebar-links">
+            <li style="margin-top: 10px; margin-bottom: 10px; font-size: 0.8rem; color: #888; padding-left: 15px;">MENU UTAMA</li>
+            <li><a href="index.html"><span>🏠</span> Beranda</a></li>
+            <li><a href="destinasi.html"><span>🏔️</span> Destinasi</a></li>
+            <li><a href="#map-section" onclick="closeMenu()"><span>🗺️</span> Peta Jalur</a></li>
+            <li><a href="#weather-section" onclick="closeMenu()"><span>⛅</span> Cek Cuaca</a></li>
+            <li style="border-top: 1px solid rgba(255,255,255,0.1); margin: 15px 0;"></li>
+            <li><a href="informasi.html" onclick="closeMenu()"><span>ℹ️</span> Tentang Kami</a></li>
+        </ul>
+
+        <div class="sidebar-footer">
+            <p>&copy; 2025 Jejak Rimba</p>
+        </div>
+    </aside>
+
+    <header id="hero" class="hero-section">
+        <div class="hero-content">
+            <h1 class="anim-text">Panggilan Alam Semesta</h1>
+            <p class="anim-text delay">Temukan kedamaian di antara lembah, sungai, dan pegunungan.</p>
+            <a href="#map-section" class="btn-adventure anim-text delay-2">Mulai Petualangan</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="about" class="content-section">
+            <div class="glass-panel text-center">
+                <h2 class="reveal-type">Harmoni Bumi</h2>
+                <p class="reveal-type">Setiap langkah di hutan adalah perjalanan pulang. Kami mengajak Anda untuk tidak hanya melihat, tetapi merasakan detak jantung alam liar.</p>
+            </div>
+        </section>
+
+        <section id="map-section" class="content-section">
+            <div class="glass-panel">
+                <h2 class="text-center reveal-type">Peta Ekspedisi</h2>
+                <div id="map"></div>
+            </div>
+        </section>
+
+        <section id="weather-section" class="content-section">
+            <div class="weather-card">
+                <h3>Kondisi Di Lapangan</h3>
+                
+                <div class="weather-input">
+                    <input type="text" id="cityInput" placeholder="Nama Kota/Gunung...">
+                    <button onclick="getWeatherByCity()">Cek</button>
+                    <button onclick="getLocation()" class="btn-location">📍 Lokasi Saya</button>
+                </div>
+                
+                <div id="loading" style="display: none; margin-top: 15px; color: #d8ba8c;">Sedang memuat data...</div>
+                <div id="errorMsg" style="display: none; background: rgba(255,0,0,0.2); color: #ffcccc; padding: 10px; border-radius: 10px; margin-top: 15px;"></div>
+
+                <div id="weatherResult" style="display: none;" class="weather-display">
+                    <img id="wIcon" src="" alt="icon" style="display: block; margin: 0 auto; width: 100px;">
+                    <h4 id="wTemp" style="font-size: 3rem; margin: 10px 0;">--°C</h4>
+                    <p id="wDesc" style="text-transform: capitalize;">--</p>
+                    <div class="details" style="display: flex; justify-content: space-around; margin-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 10px;">
+                        <span>Angin: <span id="wWind">-</span></span>
+                        <span>Lembab: <span id="wHum">-</span></span>
+                    </div>
+                    <div style="margin-top: 10px; font-size: 0.8rem; color: #d8ba8c;">Lokasi: <span id="wCity">-</span></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Jejak Rimba. Lestari Alamku.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    
+    <script src="script.js"></script>
+</body>
+</html>
